@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Artistique | Art Coloré du Maroc</title>
+    <style>
+        /* Variables et styles globaux */
+        :root {
+            --color-primary: #f05a28;
+            --color-secondary: #27a9e1;
+            --color-accent: #7ac943;
+            --color-dark: #333333;
+            --color-light: #f9f9f9;
+            --font-main: 'Montserrat', sans-serif;
+            --font-accent: 'Playfair Display', serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-accent);
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-top: 2rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+            color: var(--color-secondary);
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--color-primary);
+        }
+        
+        button, .btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-main);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px 0;
+        }
+        
+        button:hover, .btn:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Header et navigation */
+        header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--color-dark);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #f6f6f6;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .hero-images {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            width: 50%;
+            height: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        .highlight {
+            color: var(--color-primary);
+            font-style: italic;
+        }
+        
+        /* À propos section */
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .about-container {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--color-secondary);
+            top: -15px;
+            left: -15px;
+            z-index: -1;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .timeline {
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--color-secondary);
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .timeline-item {
+            margin-left: 30px;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            left: -38px;
+            top: 5px;
+        }
+        
+        /* Collections section */
+        .collections {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .collection-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .tab-btn.active {
+            border-bottom: 3px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .morocco-map {
+            width: 100%;
+            height: 400px;
+            background-image: url('/api/placeholder/800/400');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .map-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .map-point:hover {
+            transform: scale(1.5);
+        }
+        
+        .map-point.casablanca {
+            top: 40%;
+            left: 25%;
+        }
+        
+        .map-point.marrakech {
+            top: 55%;
+            left: 35%;
+        }
+        
+        .map-point.fes {
+            top: 30%;
+            left: 45%;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .city-description {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Portraits section */
+        .portraits {
+            display: none; /* Default hidden, shown via JavaScript */
+        }
+        
+        .portrait-item {
+            display: flex;
+            margin-bottom: 4rem;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .portrait-image {
+            flex: 1;
+            min-height: 400px;
+        }
+        
+        .portrait-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .portrait-info {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        /* Processus créatif section */
+        .process {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            width: 200px;
+            text-align: center;
+            margin: 0 20px 40px;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .process-gallery {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .process-image {
+            position: relative;
+        }
+        
+        .process-image img {
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .process-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .process-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Exposition section */
+        .exhibition {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .exhibition-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .exhibition-details {
+            flex: 1;
+        }
+        
+        .exhibition-image {
+            flex: 1;
+        }
+        
+        .exhibition-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        /* Témoignages section */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial {
+            width: 300px;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-family: var(--font-accent);
+            font-size: 5rem;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: #ddd;
+        }
+        
+        /* Contact section */
+        .contact {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 2;
+        }
+        
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-main);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-heading {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--color-primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Interactive Morocco map */
+        .morocco-experience {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .experience-container {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .experience-map {
+            flex: 1;
+            height: 500px;
+            background-image: url('/api/placeholder/600/500');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .experience-content {
+            flex: 1;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+                text-align: center;
+                padding: 2rem;
+            }
+            
+            .hero-images {
+                display: none;
+            }
+            
+            .about-container, .contact-container, .experience-container {
+                flex-direction: column;
+            }
+            
+            .portrait-item {
+                flex-direction: column;
+            }
+            
+            .exhibition-info {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Artiste Marocain</div>
+                <ul class="nav-links">
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#process">Processus</a></li>
+                    <li><a href="#exhibition">Exposition</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">Menu</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Art coloré inspiré par <span class="highlight">VOKA</span></h1>
+                <p>Explorez les villes marocaines et personnalités iconiques à travers un univers pictural vibrant et expressif.</p>
+                <a href="#collections" class="btn">Découvrir mes œuvres</a>
+            </div>
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/400" alt="Tableau coloré de Casablanca">
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/400" alt="Portrait artistique">
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/400" alt="Tableau coloré de Marrakech">
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/400" alt="Atelier d'artiste">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Mon parcours artistique</h2>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="/api/placeholder/500/600" alt="Artiste dans son atelier">
+                </div>
+                <div class="about-content">
+                    <h3>4 ans de passion colorée</h3>
+                    <p>C'est il y a quatre ans que j'ai découvert ma passion pour la peinture, fasciné par les couleurs vibrantes et le mouvement qui caractérisent le style "Spontaneous Realism" de l'artiste VOKA.</p>
+                    <p>Autodidacte et passionné, j'ai développé ma propre interprétation de ce style énergique en l'imprégnant de la richesse culturelle marocaine qui m'est si chère.</p>
+                    <p>Ma démarche artistique consiste à capturer l'essence des lieux emblématiques du Maroc et des personnalités qui font rayonner sa culture, à travers des compositions dynamiques et des explosions de couleurs qui transmettent l'émotion au-delà de la simple représentation.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>2021 - Débuts</h4>
+                            <p>Premières explorations du style coloré, inspirées par VOKA, avec des techniques d'acrylique et des mouvements spontanés.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2022 - Première collection</h4>
+                            <p>Développement de la collection "Villes du Maroc" avec les premières représentations de Casablanca et Marrakech.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2023 - Portraits</h4>
+                            <p>Exploration du portrait à travers des figures emblématiques marocaines, cherchant à capturer leur personnalité au-delà de leur image.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2024 - Exposition à Casablanca</h4>
+                            <p>Première exposition collective dans une galerie d'art de Casablanca, marquant une étape importante dans mon parcours artistique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <h2>Mes collections</h2>
+            <div class="collection-tabs">
+                <button class="tab-btn active" data-tab="cities">Villes du Maroc</button>
+                <button class="tab-btn" data-tab="portraits">Portraits</button>
+            </div>
+            
+            <!-- Cities of Morocco -->
+            <div class="cities-collection">
+                <div class="morocco-map">
+                    <div class="map-point casablanca" data-city="casablanca"></div>
+                    <div class="map-point marrakech" data-city="marrakech"></div>
+                    <div class="map-point fes" data-city="fes"></div>
+                    <!-- Add more map points as needed -->
+                </div>
+                
+                <div class="city-description">
+                    <h3>Casablanca - La métropole vibrante</h3>
+                    <p>Mes tableaux de Casablanca capturent le dynamisme de cette métropole où traditions et modernité coexistent. J'ai voulu transmettre l'énergie particulière de cette ville qui ne dort jamais, avec ses contrastes saisissants entre architecture art déco, buildings contemporains et médina historique.</p>
+                    
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="/api/placeholder/400/300" alt="Place Mohammed V" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <h4>Place Mohammed V</h4>
+                                <p>Le cœur battant de la ville où j'ai voulu capturer le mouvement incessant et la vie qui s'y déroule à toute heure.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/api/placeholder/400/300" alt="Mosquée Hassan II" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <h4>Mosquée Hassan II</h4>
+                                <p>Une vision nocturne où les reflets sur l'océan créent un jeu de lumières que j'ai tenté de retranscrire avec des bleus intenses contrastant avec l'or des illuminations.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/api/placeholder/400/300" alt="Quartier des Habous" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <h4>Quartier des Habous</h4>
+                                <p>L'animation de ce quartier traditionnel avec ses échoppes et son ambiance unique m'a inspiré cette composition où les couleurs des épices et textiles explosent sur la toile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Portraits -->
+            <div class="portraits">
+                <div class="portrait-item">
+                    <div class="portrait-image">
+                        <img src="/api/placeholder/500/600" alt="Portrait artistique">
+                    </div>
+                    <div class="portrait-info">
+                        <h3>Nass El Ghiwane</h3>
+                        <p>Ce portrait du groupe musical légendaire Nass El Ghiwane représente l'âme de la musique populaire marocaine. J'ai choisi de les représenter dans un moment d'intense performance, capturant leur énergie révolutionnaire qui a transformé la scène musicale du pays.</p>
+                        <p>Pour cette œuvre, j'ai utilisé une palette dominée par les ocres et les rouges, évoquant la terre et la passion qui caractérisent leur musique. Les mouvements dynamiques du pinceau traduisent le rythme envoûtant de leurs compositions.</p>
+                        <p>Ce groupe, souvent appelé "les Rolling Stones du Maroc", m'a particulièrement touché par leur capacité à mêler tradition et contestation sociale, un équilibre que j'ai tenté de retranscrire par des contrastes marqués et des lignes expressives.</p>
+                    </div>
+                </div>
+                
+                <div class="portrait-item">
+                    <div class="portrait-image">
+                        <img src="/api/placeholder/500/600" alt="Portrait artistique">
+                    </div>
+                    <div class="portrait-info">
+                        <h3>Fatima Mernissi</h3>
+                        <p>Mon portrait de Fatima Mernissi, sociologue et féministe marocaine de renommée mondiale, cherche à capturer sa force intellectuelle et sa détermination tranquille. Dans cette œuvre, j'ai voulu honorer celle qui a ouvert tant de portes pour les femmes dans le monde arabe.</p>
+                        <p>J'ai utilisé des bleus profonds et des violets pour évoquer sa sagesse et sa vision, tout en incorporant des touches de jaune lumineux symbolisant l'espoir et les idées progressistes qu'elle a défendues toute sa vie.</p>
+                        <p>La composition mêle des éléments abstraits représentant ses idées révolutionnaires avec un regard perçant qui invite le spectateur à la réflexion, tout comme ses écrits nous poussent à questionner les normes établies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus Créatif Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2>Mon processus créatif</h2>
+            <p>Chaque tableau est le fruit d'un processus créatif qui mêle spontanéité et réflexion, inspiré par le "Spontaneous Realism" tout en développant ma propre signature artistique.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">1</div>
+                    <h4>Inspiration</h4>
+                    <p>Je m'imprègne de l'ambiance d'un lieu ou d'une personnalité, en collectant des images, des sons, des sensations.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">2</div>
+                    <h4>Esquisse</h4>
+                    <p>Je réalise plusieurs croquis rapides pour capturer l'énergie et le mouvement essentiel du sujet.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">3</div>
+                    <h4>Composition</h4>
+                    <p>J'établis la structure de base sur la toile avec des lignes directrices qui guideront l'œil à travers la composition.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">4</div>
+                    <h4>Couleur</h4>
+                    <p>J'applique les couleurs par couches successives, en commençant par les tons dominants puis en ajoutant progressivement les détails vibrants.</p>
+                </div>
+            </div>
+            
+            <div class="process-gallery">
+                <div class="process-image">
+                    <img src="/api/placeholder/350/250" alt="Processus étape 1">
+                    <div class="process-caption">Premiers croquis d'une vue de Marrakech</div>
+                </div>
+                <div class="process-image">
+                    <img src="/api/placeholder/350/250" alt="Processus étape 2">
+                    <div class="process-caption">Application des premières couches de couleur</div>
+                </div>
+                <div class="process-image">
+                    <img src="/api/placeholder/350/250" alt="Processus étape 3">
+                    <div class="process-caption">Ajout des détails et contrastes</div>
+                </div>
+                <div class="process-image">
+                    <img src="/api/placeholder/350/250" alt="Processus étape 4">
+                    <div class="process-caption">Œuvre finale avec les touches expressives</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exposition Section -->
+    <section id="exhibition" class="exhibition">
+        <div class="container">
+            <h2>Mon exposition à Casablanca</h2>
+            <div class="exhibition-info">
+                <div class="exhibition-details">
+                    <h3>Galerie d'Art Contemporain, Casablanca</h3>
+                    <p><strong>Date :</strong> Novembre 2024</p>
+                    <p><strong>Thème :</strong> "Couleurs du Maroc: Entre Tradition et Modernité"</p>
+                    <p>Ma première exposition collective a été une expérience transformative. Partager l'espace avec d'autres artistes talentueux m'a permis d'échanger des idées et d'approfondir ma vision artistique.</p>
+                    <p>J'ai eu l'opportunité de présenter cinq œuvres représentatives de mes deux collections, suscitant des échanges passionnants avec les visiteurs sur ma perception colorée du Maroc et mon approche du "Spontaneous Realism".</p>
+                    <p>Cette exposition a confirmé mon désir de poursuivre cette voie artistique et d'explorer davantage les possibilités expressives de ce style unique appliqué aux richesses culturelles de mon pays.</p>
+                </div>
+                <div class="exhibition-image">
+                    <img src="/api/placeholder/500/400" alt="Exposition à Casablanca">
+                </div>
+            </div>
+            
+            <h3>Œuvres exposées</h3>
+            <div class="exhibition-gallery">
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Œuvre exposée 1" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h4>Médina de Fès</h4>
+                        <p>L'une des œuvres les plus commentées lors de l'exposition pour ses contrastes saisissants.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Œuvre exposée 2" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h4>Portrait de Nass El Ghiwane</h4>
+                        <p>Cette œuvre a suscité des conversations sur l'héritage musical marocain.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Œuvre exposée 3" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h4>Jardin Majorelle</h4>
+                        <p>L'intensité des bleus et la lumière particulière de ce lieu ont été particulièrement appréciées.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Ce qu'ils en disent</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">Les œuvres dégagent une énergie communicative qui m'a immédiatement transporté dans les rues vibrantes de Marrakech. Une technique impressionnante au service d'une vision authentique du Maroc.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div>Ahmed K., Visiteur de l'exposition</div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">J'ai été fascinée par la façon dont l'artiste a capturé l'essence de Fatima Mernissi. Au-delà de la ressemblance physique, c'est toute la force intellectuelle et la douceur de cette grande dame qui transparaissent.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div>Leila M., Collectionneuse d'art</div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">Le style énergique et coloré apporte un regard nouveau sur des lieux que je connais bien. C'est à la fois familier et surprenant, une réinterprétation vibrante de notre patrimoine marocain.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div>Karim D., Galeriste</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Interactive Section -->
+    <section id="experience" class="morocco-experience">
+        <div class="container">
+            <h2>Voyage artistique à travers le Maroc</h2>
+            <p>Explorez le Maroc à travers mon regard d'artiste. Cliquez sur les différentes régions pour découvrir mes œuvres et mes impressions sur ces lieux qui m'inspirent.</p>
+            <div class="experience-container">
+                <div class="experience-map">
+                    <!-- Points d'intérêt sur la carte interactive - activés par JavaScript -->
+                </div>
+                <div class="experience-content">
+                    <h3>Sélectionnez une ville sur la carte</h3>
+                    <p>Chaque ville du Maroc possède son propre caractère, ses couleurs et son rythme. À travers mes tableaux, je tente de capturer l'essence unique de ces lieux emblématiques.</p>
+                    <p>Cliquez sur un point de la carte pour découvrir mes impressions artistiques et les œuvres correspondantes.</p>
+                    <p>Vous découvrirez également mes recommandations personnelles pour chaque lieu - où aller pour ressentir l'âme véritable de l'endroit, quel est le meilleur moment pour visiter, ou quels détails observer pour apprécier pleinement sa beauté.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-moi</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Restons en contact</h3>
+                    <p>Pour toute question sur mes œuvres, demande de commission ou information sur mes prochaines expositions, n'hésitez pas à me contacter.</p>
+                    <p>Vous pouvez également vous inscrire à ma newsletter pour être informé de mes dernières créations et événements.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">YT</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Artiste Marocain</h3>
+                    <p>Un univers artistique coloré inspiré par VOKA, dédié à la beauté et à la richesse culturelle du Maroc.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-heading">Navigation</h3>
+                    <ul>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="#process">Processus</a></li>
+                        <li><a href="#exhibition">Exposition</a></li>
+                        <li><a href="#testimonials">Témoignages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-heading">Contact</h3>
+                    <p>Email: artiste@example.com</p>
+                    <p>Tél: +212 600 000 000</p>
+                    <p>Atelier: Casablanca, Maroc</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Artiste Marocain. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Tab switching for collections
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const citiesCollection = document.querySelector('.cities-collection');
+        const portraitsCollection = document.querySelector('.portraits');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(button => button.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show the corresponding collection
+                const tabName = btn.getAttribute('data-tab');
+                if (tabName === 'cities') {
+                    citiesCollection.style.display = 'block';
+                    portraitsCollection.style.display = 'none';
+                } else if (tabName === 'portraits') {
+                    citiesCollection.style.display = 'none';
+                    portraitsCollection.style.display = 'block';
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Interactive map functionality would be added here
+        // This would involve adding event listeners to the map points
+        // and updating the city description and gallery based on selections
+    </script>
+</body>
+</html>
